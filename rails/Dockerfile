@@ -1,16 +1,19 @@
 FROM ruby:3.3.0
 RUN apt-get update -qq && apt-get install -y vim 
 
-#RUN apt-get install -y python3 python3-pip
-#ENV PYTHONIOENCODING "utf-8"
-#WORKDIR /usr/local/bin/
-#RUN ln -s `which python3` python
-#RUN ln -s `which pip3` pip
-#RUN apt-get -y install pipx
-#RUN pipx ensurepath --global
-#RUN pipx install spacy 
-#RUN pipx install ginza 
-#RUN python -m spacy download ja_core_news_lg
+RUN apt-get install -y build-essential
+RUN apt-get install -y curl wget zip git
+
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+RUN echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+RUN source ~/.bashrc
+RUN env CONFIGURE_OPTS="--enable-shared" pyenv install 3.10.6
+RUN pyenv global 3.10.6 
+RUN pip install spacy
+RUN pip install ginza
+RUN python -m spacy download ja_core_news_sm
 
 RUN mkdir /usr/src/app 
 WORKDIR /usr/src/app
