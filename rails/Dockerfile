@@ -18,11 +18,8 @@ RUN [ \
         && pyenv global 3.10.6 \
         && pip install spacy==3.6.0 \
         && pip install ginza==5.1.3 \
+        && python -m spacy download ja_core_news_sm \
     "] 
- 
-#RUN 
-#RUN 
-#RUN python -m spacy download ja_core_news_sm 
 
 RUN mkdir /usr/src/app 
 WORKDIR /usr/src/app
