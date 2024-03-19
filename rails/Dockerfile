@@ -13,12 +13,16 @@ RUN [ \
         && echo 'command -v pyenv >/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' >> ~/.bashrc \
         && echo 'eval \"$(pyenv init -)\"' >> ~/.bashrc \
         && source ~/.bashrc \
-        && env CONFIGURE_OPTS=\"--enable-shared\" pyenv install 3.10.6 \
+        && export CONFIGURE_OPTS=\"--enable-shared\" \
+        && pyenv install 3.10.6 \
         && pyenv global 3.10.6 \
-        && pip install spacy \ 
+        && pip install spacy \
         && pip install ginza \
-        && python -m spacy download ja_core_news_sm \
     "] 
+ 
+#RUN 
+#RUN 
+#RUN python -m spacy download ja_core_news_sm 
 
 RUN mkdir /usr/src/app 
 WORKDIR /usr/src/app
