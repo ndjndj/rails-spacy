@@ -16,8 +16,8 @@ RUN [ \
         && export CONFIGURE_OPTS=\"--enable-shared\" \
         && pyenv install 3.10.6 \
         && pyenv global 3.10.6 \
-        && pip install spacy \
-        && pip install ginza \
+        && pip install spacy==3.6.0 \
+        && pip install ginza==5.1.3 \
     "] 
  
 #RUN 
