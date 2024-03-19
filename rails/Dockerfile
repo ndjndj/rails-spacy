@@ -1,13 +1,15 @@
 FROM ruby:3.3.0
 RUN apt-get update -qq && apt-get install -y vim 
 
-RUN apt-get install -y python3 python3-pip python3-venv
-ENV PYTHONIOENCODING "utf-8"
-WORKDIR /usr/local/bin/
-RUN ln -s `which python3` python
-RUN ln -s `which pip3` pip
-RUN python -m venv /usr/local/bin/
-#RUN pip install spacy ginza 
+#RUN apt-get install -y python3 python3-pip
+#ENV PYTHONIOENCODING "utf-8"
+#WORKDIR /usr/local/bin/
+#RUN ln -s `which python3` python
+#RUN ln -s `which pip3` pip
+#RUN apt-get -y install pipx
+#RUN pipx ensurepath --global
+#RUN pipx install spacy 
+#RUN pipx install ginza 
 #RUN python -m spacy download ja_core_news_lg
 
 RUN mkdir /usr/src/app 
