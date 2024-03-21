@@ -1,7 +1,7 @@
 version: '3'
 services: 
   db: 
-    container_name: postgres-sample
+    container_name: postgres-spacy-sample
     image: postgres:16.0
     ports: 
       - "5432:5432"
@@ -13,7 +13,7 @@ services:
       - POSTGRES_PASSWORD=password 
       - POSTGRES_ROOT_PASSWORD=root
   api: 
-    container_name: api-sample
+    container_name: api-spacy-sample
     build: 
       context: ./rails
     command: bash -c "rm -f tmp/pids/server.pid && tail -f log/development.log" 
